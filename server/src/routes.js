@@ -4,5 +4,8 @@ module.exports = (app) => {
     app.post('/register',
         AuthenticationControllerPolicy.register, //call auth policy middleware
         AuthenticationController.register
+    ),
+    app.post('/signin',
+        AuthenticationController.signin
     )
 }

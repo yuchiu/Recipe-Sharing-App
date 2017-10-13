@@ -9,5 +9,8 @@ module.exports = {
             host: process.env.HOST || 'localhost',
             storage: './recipeApp.sqlite'
         }
+    },
+    authentication: {
+        jwtSecret: process.env.JWT_SECRET || 'secret'
     }
 }
