@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize')//ORM for connecting to database
 const config = require('../config/config')
 const db = {}
 
@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
     config.db.options,
 )
 
+//helper function for easily add new model, read all files that's not index.js.
 fs
     .readdirSync(__dirname)
     .filter((file) =>
