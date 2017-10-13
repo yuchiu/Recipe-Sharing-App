@@ -34,7 +34,7 @@ module.exports = {
                     error: 'Invalid sign in infomation'
                 })
             }
-            const isPasswordValid = password === user.password
+            const isPasswordValid = await user.comparePassword(password)
             if(!isPasswordValid){
                 return res.status(403).send({
                     error: 'Invalid sign in infomation'
