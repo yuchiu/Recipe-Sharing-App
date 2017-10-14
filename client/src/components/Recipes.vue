@@ -2,8 +2,8 @@
   <v-layout column>
     <v-flex xs8 offset-xs2>
       <panel title="recipes">
-      <div v-for="recipe in recipes" :key="recipe.title">
-      {{recipe.title}}
+      <div v-for="recipe in recipes" :key="recipe.id">
+      {{recipe.title}}-
       {{recipe.category}}
       </div>
       </panel>
@@ -25,7 +25,7 @@ export default {
     }
   },
   async mounted(){
-    this.songs = await RecipesService.index()
+    this.recipes = (await RecipesService.index()).data
   }
 }
 </script>
