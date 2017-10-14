@@ -7,7 +7,7 @@ module.exports = {
             const recipe = await Recipe.findAll({
                 limit:10
             })
-            res.send(recipe)
+            res.send(recipe.reverse())
         } catch (err){
             res.status(500).send({
                 error: `error occured trying to fetch the recipes`
