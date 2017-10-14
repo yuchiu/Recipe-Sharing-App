@@ -1,23 +1,19 @@
 <template>
   <v-layout column>
-    <v-flex xs6 offset-xs3>
-      <div class= "white elevation-2">
-        <v-toolbar flat dense class="red lighten-1" dark>
-          <v-toolbar-title>Recipes</v-toolbar-title>
-        </v-toolbar>
-        <div class="pl-4 pr-4 pb-2 pt-2 ">
-
-        </div>
-      </div>
+    <v-flex xs8 offset-xs2>
+      <panel title="recipes">
+      <h3>dasdad</h3>
+      <p>dasdsasa</p>
+      </panel>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import Panel from '@/components/Panel'
 export default {
-  data () {
-    return {
-    }
+  components:{
+    Panel
   }
 }
 </script>
