@@ -29,7 +29,7 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
-import Panel from '@/components/Globals/Panel'
+import Panel from '@/components/globals/Panel'
 
 export default {
   data () {

@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Signin from '@/components/Signin'
 import Recipes from '@/components/Recipes'
+import CreateRecipe from '@/components/CreateRecipe'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/recipes',
       name: 'recipes',
       component: Recipes
+    },
+    {
+      path: '/recipes/create',
+      name: 'recipes-create',
+      component: CreateRecipe
     }
   ]
 })
