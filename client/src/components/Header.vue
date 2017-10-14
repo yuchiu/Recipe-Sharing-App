@@ -26,6 +26,12 @@
             @click="navigateTo({name: 'signin'})">
                 sign in
             </v-btn>
+            <v-btn 
+            flat dark 
+            v-if="$store.state.isUserLoggedIn"
+            @click="signout">
+                sign out
+            </v-btn>
         </v-toolbar-items>
     </v-toolbar>
 </template>
@@ -35,6 +41,13 @@ export default {
     methods:{
         navigateTo(route){
             this.$router.push(route)
+        },
+        signout(){
+            this.$store.dispatch('setToken', null)
+            this.$store.dispatch('setUser', null)
+            this.$router.push({
+                name: 'root'
+            })
         }
     }
 }
