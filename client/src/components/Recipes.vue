@@ -9,11 +9,34 @@
           class="orange lighten-3">
             <v-icon>add</v-icon>
         </v-btn>
-
-      <div v-for="recipe in recipes" :key="recipe.id">
-      {{recipe.title}}-
-      {{recipe.category}}
-      </div>
+        <div 
+          class="recipe"
+          v-for="recipe in recipes" 
+          :key="recipe.id">
+          <v-layout>
+            <v-flex xs6>
+              <div class="recipe-title">
+                {{recipe.title}}
+              </div>
+              <div class="recipe-category">
+              {{recipe.category}}
+              </div>
+              <v-btn
+                class="orange lighten-3"
+                @click="navigateTo({
+                  name:'recipe', 
+                  params:{
+                    recipeId: recipe.id
+                  }
+                })">
+                View
+              </v-btn>
+            </v-flex>
+            <v-flex xs6>
+              <img class="recipe-image" :src="recipe.imageUrl"/>
+            </v-flex>
+          </v-layout>
+        </div>
       </panel>
     </v-flex>
   </v-layout>
@@ -44,5 +67,19 @@ export default {
 </script>
 
 <style scoped>
-
+.recipe{
+    padding: 20px;
+    height:200px;
+    overflow: hidden;
+}
+.recipe-title{
+    font-size: 30px;
+}
+.recipe-category{
+    font-size: 24px;
+}
+.recipe-image{
+  width: 60%;
+  margin: 0 auto;
+}
 </style>

@@ -5,6 +5,7 @@ import Register from '@/components/Register'
 import Signin from '@/components/Signin'
 import Recipes from '@/components/Recipes'
 import CreateRecipe from '@/components/CreateRecipe'
+import ViewRecipe from '@/components/ViewRecipe'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/recipes/create',
       name: 'recipes-create',
       component: CreateRecipe
+    },
+    {
+      path: '/recipes/:recipeId',
+      name: 'recipe',
+      component: ViewRecipe
     }
   ]
 })

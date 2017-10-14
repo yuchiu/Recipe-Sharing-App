@@ -45,7 +45,7 @@
         ></v-text-field>
         </panel>
         <div 
-            class="error" v-if="error">
+            class="danger-alert" v-if="error">
             {{error}}
         </div>
         <v-btn
