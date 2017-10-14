@@ -7,8 +7,10 @@
         </v-toolbar-title >
 
         <v-toolbar-items>
-            <v-btn flat dark>
-                browse
+            <v-btn 
+            flat dark 
+            @click="navigateTo({name: 'recipes'})">
+                Browse
             </v-btn>
         </v-toolbar-items>
 
