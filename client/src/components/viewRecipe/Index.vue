@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import Panel from '@/components/globals/Panel'
 import RecipesService from '@/services/RecipesService'
 import RecipeDesc from './RecipeDesc'
 import Youtube from './Youtube'
@@ -35,7 +34,6 @@ import Preparation from './Preparation'
 
 export default {
   components: {
-    Panel,
     RecipeDesc,
     Youtube,
     Preparation,

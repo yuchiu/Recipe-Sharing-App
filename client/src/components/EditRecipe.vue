@@ -60,7 +60,6 @@
 </template>
 
 <script>
-import Panel from '@/components/globals/Panel'
 import RecipesService from '@/services/RecipesService'
 
 export default {
@@ -114,9 +113,6 @@ export default {
             catch(err){
                 console.log(err)
             }
-    },
-    components:{
-        Panel
     }
 }
 </script>
