@@ -6,6 +6,7 @@ import Signin from '@/components/nav/Signin'
 import Recipes from '@/components/Recipes'
 import CreateRecipe from '@/components/CreateRecipe'
 import ViewRecipe from '@/components/viewRecipe/Index'
+import EditRecipe from '@/components/editRecipe'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/recipes/:recipeId',
       name: 'recipe',
       component: ViewRecipe
+    },
+    {
+      path: '/recipes/:recipeId/edit',
+      name: 'recipes-edit',
+      component: EditRecipe
     }
   ]
 })

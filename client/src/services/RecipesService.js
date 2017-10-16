@@ -9,5 +9,8 @@ export default {
     },
     show(recipeId){
         return Api().get(`recipes/${recipeId}`)
+    },
+    put(recipe) {
+        return Api().put(`recipes/${recipe.id}`, recipe)
     }
 }

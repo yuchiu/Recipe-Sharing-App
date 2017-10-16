@@ -8,6 +8,17 @@
             <div class="recipe-category">
             {{recipe.category}}
             </div>
+              <v-btn
+                class="orange lighten-3"
+                @click="navigateTo({
+                name: 'recipes-edit', 
+                params:{
+                    recipeId:recipe.id
+                    }
+                    })">
+                Edit
+              </v-btn>
+        </v-btn>
         </v-flex>
         <v-flex xs6>
             <img class="recipe-image" :src="recipe.imageUrl"/>
@@ -24,7 +35,12 @@ export default {
     },
     props: [
         "recipe"
-    ]
+    ],
+    methods:{
+        navigateTo(route){
+        this.$router.push(route)
+        }
+    }
 }
 
 </script>

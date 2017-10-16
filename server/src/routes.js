@@ -15,8 +15,11 @@ module.exports = (app) => {
     ),
     app.post('/recipes',
         RecipesController.post
-    )    
+    ),    
     app.get('/recipes/:recipeId',
         RecipesController.show
+    ),    
+    app.put('/recipes/:recipeId',
+        RecipesController.put
     )
 }

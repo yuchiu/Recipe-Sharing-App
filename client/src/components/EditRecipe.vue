@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-flex xs6 md4>
-        <panel title="Recipe Description">
+        <panel title="Recipe Metadata">
             <v-text-field  
                 label="Title"
                 required
@@ -51,9 +51,9 @@
         <v-btn
             dark
             class="red lighten-1"
-            @click="create"
+            @click="save"
             >
-            Create Recipe
+            Save Recipe
         </v-btn>
     </v-flex>
   </v-layout>
@@ -81,7 +81,7 @@ export default {
         }
     },
     methods:{
-        async create(){
+        async save(){
             this.error=null
             let areRequiredFilledIn = false
             if(this.recipe.title!==null&&this.recipe.category!==null&&this.recipe.imageUrl!==null){
@@ -91,16 +91,29 @@ export default {
                 this.error="Fill in all the required fileds"
                 return
             }
+            const recipeId = this.$store.state.route.params.recipeId
             try{
-                await RecipesService.post(this.recipe)
+                await RecipesService.put(this.recipe)
                 this.$router.push({
-                    name: 'recipes'
+                    name: 'recipe',
+                    params:{
+                        recipeId: recipeId
+                    }
                 })
             }
             catch(err){
                 console.log(err)
             }
         }
+    },
+    async mounted(){
+            try{
+                const recipeId = this.$store.state.route.params.recipeId
+                this.recipe = (await RecipesService.show(recipeId)).data
+            }
+            catch(err){
+                console.log(err)
+            }
     },
     components:{
         Panel

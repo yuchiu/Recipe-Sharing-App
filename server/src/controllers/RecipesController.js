@@ -33,5 +33,19 @@ module.exports = {
                 error: `error occured trying to fetch the recipe by Id`
             })
         }
+    },
+    async put(req, res) {
+        try {
+            const recipe = await Recipe.update(req.body,{
+                where: {
+                    id: req.params.recipeId
+                }
+            })
+            res.send(req.body)
+        } catch (err){
+            res.status(500).send({
+                error: `error occured trying to update the recipe by Id`
+            })
+        }
     }
 }
