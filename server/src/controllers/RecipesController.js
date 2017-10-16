@@ -4,10 +4,26 @@ const config = require('../config/config')
 module.exports = {
     async index(req, res) {
         try {
-            const recipe = await Recipe.findAll({
-                limit:10
-            })
-            res.send(recipe.reverse())
+            let recipes= null
+            const search = req.query.search
+            if(search){
+                recipes = await Recipe.findAll({
+                    where:{
+                        $or:[
+                            'title', 'category'
+                        ].map(key=>({
+                            [key]: {
+                                $like: `%${search}%`
+                            }
+                        }))
+                    }
+                })
+            }else{
+                recipes = await Recipe.findAll({
+                    limit:10
+                })
+            }
+            res.send(recipes.reverse())
         } catch (err){
             res.status(500).send({
                 error: `error occured trying to fetch the recipes`

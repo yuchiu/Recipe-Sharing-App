@@ -52,8 +52,13 @@ export default {
       this.$router.push(route)
     }
   },
-  async mounted(){
-    this.recipes = (await RecipesService.index()).data
+  watch:{
+    '$route.query.search':{
+      immediate: true,
+      async handler(value){
+        this.recipes = (await RecipesService.index(value)).data
+      }
+    }
   }
 }
 </script>
