@@ -23,5 +23,15 @@ module.exports = {
                 error: `error occured trying to create the recipe`
             })
         }
+    },
+    async show(req, res) {
+        try {
+            const recipe = await Recipe.findById(req.params.recipeId)
+            res.send(recipe)
+        } catch (err){
+            res.status(500).send({
+                error: `error occured trying to fetch the recipe by Id`
+            })
+        }
     }
 }

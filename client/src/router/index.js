@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import Register from '@/components/Register'
-import Signin from '@/components/Signin'
+import Register from '@/components/nav/Register'
+import Signin from '@/components/nav/Signin'
 import Recipes from '@/components/Recipes'
 import CreateRecipe from '@/components/CreateRecipe'
-import ViewRecipe from '@/components/ViewRecipe'
+import ViewRecipe from '@/components/viewRecipe/Index'
 
 Vue.use(Router)
 

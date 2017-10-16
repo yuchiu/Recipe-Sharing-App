@@ -9,7 +9,7 @@ const sequelize = new Sequelize(
     config.db.database,
     config.db.user,
     config.db.password,
-    config.db.options,
+    config.db.options
 )
 
 //helper function for easily add new model, read all files that's not index.js.
