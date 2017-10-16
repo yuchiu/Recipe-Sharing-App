@@ -20,7 +20,7 @@ module.exports = {
                 })
             }else{
                 recipes = await Recipe.findAll({
-                    limit:10
+                    limit:20
                 })
             }
             res.send(recipes.reverse())
