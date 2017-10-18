@@ -10,12 +10,14 @@
             </div>
               <v-btn
                 class="orange lighten-3"
-                @click="navigateTo({
+                :to="{
                 name: 'recipes-edit', 
-                params:{
-                    recipeId:recipe.id
-                    }
-                    })">
+                params(){
+                        return {
+                            recipeId:recipe.id
+                            }
+                        }
+                    }">
                 Edit
               </v-btn>
         </v-btn>
@@ -31,12 +33,7 @@
 export default {
     props: [
         "recipe"
-    ],
-    methods:{
-        navigateTo(route){
-        this.$router.push(route)
-        }
-    }
+    ]
 }
 
 </script>

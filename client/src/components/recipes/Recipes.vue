@@ -2,7 +2,7 @@
   <panel title="recipes">        
     <v-btn 
       slot="action" 
-      @click="navigateTo({name: 'recipes-create'})"
+      :to="{name: 'recipes-create'}"
       fab light medium absolute right middle 
       class="orange lighten-3">
         <v-icon>add</v-icon>
@@ -21,12 +21,12 @@
           </div>
           <v-btn
             class="orange lighten-3"
-            @click="navigateTo({
+            :to="{
               name:'recipe', 
               params:{
                 recipeId: recipe.id
               }
-            })">
+            }">
             View
           </v-btn>
         </v-flex>
@@ -45,11 +45,6 @@ export default {
   data(){
     return {
       recipes: null
-    }
-  },
-  methods:{
-    navigateTo(route){
-      this.$router.push(route)
     }
   },
   watch:{

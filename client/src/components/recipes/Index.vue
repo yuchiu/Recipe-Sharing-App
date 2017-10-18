@@ -22,11 +22,6 @@ export default {
       recipes: null
     }
   },
-  methods:{
-    navigateTo(route){
-      this.$router.push(route)
-    }
-  },
   async mounted(){
     this.recipes = (await RecipesService.index()).data
   }
