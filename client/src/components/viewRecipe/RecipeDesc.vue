@@ -8,7 +8,7 @@
             <div class="recipe-category">
             {{recipe.category}}
             </div>
-              <v-btn
+            <v-btn
                 class="orange lighten-3"
                 :to="{
                 name: 'recipes-edit', 
@@ -19,8 +19,22 @@
                         }
                     }">
                 Edit
-              </v-btn>
-        </v-btn>
+            </v-btn>
+
+            <v-btn
+                v-if="isUserLoggedIn && !bookmark"
+                    class="orange lighten-3"            
+                    @click = "setBookmark"
+                >
+                Set Bookmark
+            </v-btn>
+            <v-btn
+                v-if="isUserLoggedIn && bookmark"
+                    class="orange lighten-3"          
+                    @click = "unsetAsBookmark"
+                >
+                Unset Bookmark
+            </v-btn>
         </v-flex>
         <v-flex xs6>
             <img class="recipe-image" :src="recipe.imageUrl"/>
@@ -30,10 +44,57 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+import BookmarksService from '@/services/BookmarksService'
 export default {
     props: [
         "recipe"
-    ]
+    ],
+    data () {
+        return{
+            bookmark: null
+        }
+    },
+    computed:{
+        ...mapState([
+            'isUserLoggedIn'
+        ])
+    },
+    watch:{
+    async recipe(){
+        if(!this.isUserLoggedIn){
+            return
+        }
+        try{
+        this.bookmark = (await BookmarksService.index({
+            recipeId : this.recipe.id,
+            userId : this.$store.state.user.id
+        })).data
+        }catch(err){
+            console.log(err)
+        }
+    }
+    },
+    methods:{
+        async setBookmark(){
+            try{
+                this.bookmark = (await BookmarksService.post({
+                recipeId : this.recipe.id,
+                    userId : this.$store.state.user.id
+                })).data
+            }catch(err){
+                console.log(err)
+            }
+        },
+        async unsetAsBookmark(){
+            try{
+                await BookmarksService.delete(this.bookmark.id)
+                this.bookmark = null
+            }catch(err){
+                console.log(err)
+            }
+        }
+    }
 }
 
 </script>
