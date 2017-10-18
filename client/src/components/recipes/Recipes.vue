@@ -65,10 +65,10 @@ export default {
     overflow: hidden;
 }
 .recipe-title{
-    font-size: 30px;
+    font-size: 24px;
 }
 .recipe-category{
-    font-size: 24px;
+    font-size: 18px;
 }
 .recipe-image{
   width: 60%;

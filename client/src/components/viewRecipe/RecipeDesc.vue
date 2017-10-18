@@ -57,7 +57,8 @@ export default {
     },
     computed:{
         ...mapState([
-            'isUserLoggedIn'
+            'isUserLoggedIn',
+            'user'
         ])
     },
     watch:{
@@ -66,10 +67,13 @@ export default {
             return
         }
         try{
-        this.bookmark = (await BookmarksService.index({
+            const bookmarks=  (await BookmarksService.index({
             recipeId : this.recipe.id,
-            userId : this.$store.state.user.id
+            userId : this.user.id
         })).data
+        if(bookmarks.length){
+            this.bookmark = bookmarks[0]
+        }
         }catch(err){
             console.log(err)
         }
@@ -79,8 +83,8 @@ export default {
         async setBookmark(){
             try{
                 this.bookmark = (await BookmarksService.post({
-                recipeId : this.recipe.id,
-                    userId : this.$store.state.user.id
+                    recipeId : this.recipe.id,
+                    userId : this.user.id
                 })).data
             }catch(err){
                 console.log(err)
