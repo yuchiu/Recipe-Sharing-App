@@ -27,10 +27,12 @@
 
 <script>
 import RecipesService from '@/services/RecipesService'
+import RecipeHistorysService from '@/services/RecipeHistorysService'
 import RecipeDesc from './RecipeDesc'
 import Youtube from './Youtube'
 import Ingredients from './Ingredients'
 import Preparation from './Preparation'
+import {mapState} from 'vuex'
 
 export default {
   components: {
@@ -44,9 +46,22 @@ export default {
       recipe: {}
     }
   },
+  computed:{
+      ...mapState([
+          'isUserLoggedIn',
+          'user',
+          'route'
+      ])
+  },
   async mounted(){
-    const recipeId = this.$store.state.route.params.recipeId
+    const recipeId = this.route.params.recipeId
     this.recipe = (await RecipesService.show(recipeId)).data
+    if(this.isUserLoggedIn){
+      RecipeHistorysService.post({
+        recipeId: recipeId,
+        userId: this.user.id
+      })
+    }
   }
 }
 </script>

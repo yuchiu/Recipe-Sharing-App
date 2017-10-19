@@ -1,21 +1,20 @@
 <template>
-  <panel title= "bookmark">
-    
-  <v-data-table
-      :headers="headers"
-      :pagination.sync="pagination"
-      :items="bookmarks"
-    >
-    <template slot="items" scope="props">
-      <td class="text-xs-right">{{ props.item.title }}</td>
-      <td class="text-xs-right">{{ props.item.category }}</td>
-    </template>
-  </v-data-table>
-  </panel>
+    <panel title = "Recently Viewed Recipes">
+        <v-data-table
+            :headers="headers"
+            :pagination.sync="pagination"
+            :items="histories"
+            >
+            <template slot="items" scope="props">
+            <td class="text-xs-right">{{ props.item.title }}</td>
+            <td class="text-xs-right">{{ props.item.category }}</td>
+            </template>
+        </v-data-table>
+    </panel>
 </template>
 
 <script>
-import BookmarksService from '@/services/BookmarksService'
+import RecipeHistorysService from '@/services/RecipeHistorysService'
 import {mapState} from 'vuex'
 export default {
     data(){
@@ -34,7 +33,7 @@ export default {
                 sortBy: 'createdAt',
                 descending: true
             },
-            bookmarks:[]
+            histories:[]
         }
     },
     computed:{
@@ -45,7 +44,7 @@ export default {
     },
     async mounted(){
         if(this.isUserLoggedIn){
-            this.bookmarks = (await BookmarksService.index({
+            this.histories = (await RecipeHistorysService.index({
                 userId : this.user.id
             })).data
         }
