@@ -1,9 +1,9 @@
-const {sequelize, Recipe, User, Bookmark, History} = require('../src/models')
+const {sequelize, Recipe, User, Bookmark, Recent} = require('../src/models')
 const Promise = require('bluebird')
 const recipes = require('./recipes.json')
 const users = require('./users.json')
 const bookmarks = require('./bookmarks.json')
-const histories = require('./histories.json')
+const recents = require('./recents.json')
 
 sequelize.sync({force: true})
 .then(async function (){
@@ -23,8 +23,8 @@ sequelize.sync({force: true})
         })
     )
     await Promise.all(
-        histories.map(history=>{
-            History.create(history)
+        recents.map(recent=>{
+            Recent.create(recent)
         })
     )
 })

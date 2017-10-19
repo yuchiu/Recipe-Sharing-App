@@ -27,7 +27,7 @@
 
 <script>
 import RecipesService from '@/services/RecipesService'
-import RecipeHistorysService from '@/services/RecipeHistorysService'
+import RecipeRecentsService from '@/services/RecipeRecentsService'
 import RecipeDesc from './RecipeDesc'
 import Youtube from './Youtube'
 import Ingredients from './Ingredients'
@@ -57,7 +57,7 @@ export default {
     const recipeId = this.route.params.recipeId
     this.recipe = (await RecipesService.show(recipeId)).data
     if(this.isUserLoggedIn){
-      RecipeHistorysService.post({
+      RecipeRecentsService.post({
         recipeId: recipeId,
         userId: this.user.id
       })

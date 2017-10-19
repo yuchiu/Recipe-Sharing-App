@@ -1,11 +1,11 @@
-const {History, Recipe, User} = require('../models')
+const {Recent, Recipe, User} = require('../models')
 const _ = require('lodash')
 
 module.exports = {
   async index(req, res) {
       try {
           const {userId} = req.query
-          const histories = await History.findAll({
+          const recents = await Recent.findAll({
               where: {
                   UserId: userId
               },
@@ -14,30 +14,30 @@ module.exports = {
                       model: Recipe
                   }
               ]
-          }).map(history=> history.toJSON())
-              .map(history=> _.extend(
+          }).map(recent=> recent.toJSON())
+              .map(recent=> _.extend(
                 {}, 
-                history.Recipe, 
-                history
+                recent.Recipe, 
+                recent
               ))
-              res.send(histories)
+              res.send(recents)
       } catch (err){
           res.status(500).send({
-              error: `error occured trying to fetch the history`
+              error: `error occured trying to fetch the recent`
           })
       }
   },
   async post (req, res) {
     try {
       const {recipeId, userId} = req.body
-      const history = await History.create({
+      const recent = await Recent.create({
           RecipeId: recipeId,
           UserId: userId
       })
-      res.send(history)
+      res.send(recent)
     } catch (err) {
       res.status(500).send({
-        error: 'an error has occured trying to create the history'
+        error: 'an error has occured trying to create the recent'
       })
     }
   }

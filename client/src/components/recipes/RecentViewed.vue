@@ -3,7 +3,7 @@
         <v-data-table
             :headers="headers"
             :pagination.sync="pagination"
-            :items="histories"
+            :items="recents"
             >
             <template slot="items" scope="props">
             <td class="text-xs-right">{{ props.item.title }}</td>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import RecipeHistorysService from '@/services/RecipeHistorysService'
+import RecipeRecentsService from '@/services/RecipeRecentsService'
 import {mapState} from 'vuex'
 export default {
     data(){
@@ -33,7 +33,7 @@ export default {
                 sortBy: 'createdAt',
                 descending: true
             },
-            histories:[]
+            recents:[]
         }
     },
     computed:{
@@ -44,7 +44,7 @@ export default {
     },
     async mounted(){
         if(this.isUserLoggedIn){
-            this.histories = (await RecipeHistorysService.index({
+            this.recents = (await RecipeRecentsService.index({
                 userId : this.user.id
             })).data
         }
