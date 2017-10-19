@@ -20,7 +20,7 @@ module.exports = {
                 recent.Recipe, 
                 recent
               ))
-              res.send(recents)
+              res.send(_.uniqBy(recents, recent=>recent.RecipeId))
       } catch (err){
           res.status(500).send({
               error: `error occured trying to fetch the recent`
