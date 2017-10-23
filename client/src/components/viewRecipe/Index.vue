@@ -58,8 +58,7 @@ export default {
     this.recipe = (await RecipesService.show(recipeId)).data
     if(this.isUserLoggedIn){
       RecipeRecentsService.post({
-        recipeId: recipeId,
-        userId: this.user.id
+        recipeId: recipeId
       })
     }
   }

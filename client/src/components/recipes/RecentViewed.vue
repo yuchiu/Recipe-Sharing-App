@@ -44,9 +44,7 @@ export default {
     },
     async mounted(){
         if(this.isUserLoggedIn){
-            this.recents = (await RecipeRecentsService.index({
-                userId : this.user.id
-            })).data
+            this.recents = (await RecipeRecentsService.index()).data
         }
     }
 }
