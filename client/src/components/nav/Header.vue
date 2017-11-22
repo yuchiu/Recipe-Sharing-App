@@ -1,11 +1,11 @@
 <template>
-    <v-toolbar fixed class= "red lighten-1" dark>
+    <v-toolbar fixed class= "deep-orange accent-1" dark>
         <v-toolbar-title class= "mr-4" >
             <router-link 
                 class="home" 
                 tag="span"
                 :to = "{name: 'recipes'}">
-            RECIPE BOX
+            RECIPE <b>BOX</b><i class="fa fa-spoon fa-lg" aria-hidden="true"></i>
             </router-link>
         </v-toolbar-title >
 
@@ -49,6 +49,8 @@ export default {
 
 <style scoped>
 .home{
+    font-family: 'Sofia', cursive;
     cursor: pointer;
+    font-size:24px;
 }
 </style>

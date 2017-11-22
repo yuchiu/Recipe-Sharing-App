@@ -4,7 +4,7 @@
       <page-header />
       
       <main>
-        <v-container fluid>
+        <v-container fluid id="v-container">
           <router-view></router-view>
         </v-container>
       </main>
@@ -24,13 +24,15 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+#app {font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 30px;
+  margin-top: 0px;
+}
+#v-container{
+  padding:0;
 }
 .danger-alert{
   color: red;

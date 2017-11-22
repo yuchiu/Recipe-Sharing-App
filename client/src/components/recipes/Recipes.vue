@@ -1,18 +1,18 @@
 <template>
-  <panel title="recipes">        
+  <div
+      class="recipe-list-container">        
     <v-btn 
       slot="action" 
       :to="{name: 'recipes-create'}"
       fab light medium absolute right middle 
-      class="orange lighten-3">
+      class="deep-orange lighten-2"dark>
         <v-icon>add</v-icon>
     </v-btn>
     <div 
-      class="recipe"
+      class="recipe-container"
       v-for="recipe in recipes" 
       :key="recipe.id">
-      <v-layout>
-        <v-flex xs6>
+          <img class="recipe-image" :src="recipe.imageUrl"/>
           <div class="recipe-title">
             {{recipe.title}}
           </div>
@@ -20,7 +20,7 @@
           {{recipe.category}}
           </div>
           <v-btn
-            class="orange lighten-3"
+            class="deep-orange lighten-2" dark
             :to="{
               name:'recipe', 
               params:{
@@ -29,13 +29,8 @@
             }">
             View
           </v-btn>
-        </v-flex>
-        <v-flex xs6>
-          <img class="recipe-image" :src="recipe.imageUrl"/>
-        </v-flex>
-      </v-layout>
     </div>
-  </panel>
+  </div>
 </template>
 
 <script>
@@ -59,19 +54,28 @@ export default {
 </script>
 
 <style scoped>
-.recipe{
-    padding: 20px;
-    height:200px;
-    overflow: hidden;
+.recipe-list-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 78vw;
+}
+.recipe-container{
+    text-align: center;
+    max-width: 700px;
+    max-height: 600px;
+    margin: 5px;
 }
 .recipe-title{
+    color:#888;
     font-size: 24px;
 }
 .recipe-category{
+    color:#888;
     font-size: 18px;
 }
 .recipe-image{
-  width: 60%;
-  margin: 0 auto;
+  max-width:700px;
+  max-height:300px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-flex xs6 offset-xs3>
-      <panel title= "Sign In">
+      <panel title= "Sign In" id="sign-in-panel">
         <form name="registerForm"
           autocomplete="off">
             <v-text-field  
@@ -19,7 +19,7 @@
           <br/>
           <div class="danger-alert" v-html="error"></div>
           <br/>
-          <v-btn class="red lighten-1" @click="signin" dark>sign in</v-btn>
+          <v-btn class="deep-orange lighten-2" @click="signin" dark>sign in</v-btn>
         </form>
       </panel>
     </v-flex>
@@ -58,4 +58,7 @@ export default {
 </script>
 
 <style scoped>
+#sign-in-panel{
+  margin-top:150px;
+}
 </style>
